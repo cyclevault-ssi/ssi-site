@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solid State Intelligence</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #0a0a0a;
+      color: #e0e0e0;
+      font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 2rem;
+      text-align: center;
+    }
+    .badge {
+      font-size: 0.75rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: #888;
+      margin-bottom: 1.5rem;
+    }
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.02em;
+    }
+    .tagline {
+      font-size: 1.1rem;
+      color: #aaa;
+      margin-bottom: 2.5rem;
+      max-width: 500px;
+      line-height: 1.6;
+    }
+    .product {
+      background: #111;
+      border: 1px solid #222;
+      border-radius: 8px;
+      padding: 2rem 3rem;
+      margin-bottom: 2rem;
+      max-width: 480px;
+      width: 100%;
+    }
+    .product h2 {
+      font-size: 1.4rem;
+      color: #fff;
+      margin-bottom: 0.25rem;
+    }
+    .product .sub {
+      font-size: 0.85rem;
+      color: #666;
+      margin-bottom: 1rem;
+    }
+    .product p {
+      font-size: 0.95rem;
+      color: #bbb;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+    .specs {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 1.5rem;
+      gap: 1rem;
+    }
+    .spec {
+      text-align: center;
+    }
+    .spec .val {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #fff;
+    }
+    .spec .label {
+      font-size: 0.7rem;
+      color: #666;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    a.cta {
+      display: inline-block;
+      background: #fff;
+      color: #000;
+      text-decoration: none;
+      padding: 0.75rem 2rem;
+      border-radius: 4px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 0.05em;
+      transition: background 0.2s;
+    }
+    a.cta:hover { background: #ccc; }
+    .footer {
+      margin-top: 3rem;
+      font-size: 0.7rem;
+      color: #444;
+    }
+    .footer a { color: #666; text-decoration: none; }
+    .footer a:hover { color: #fff; }
+  </style>
+</head>
+<body>
+  <div class="badge">CycleVault LLC</div>
+  <h1>Solid State Intelligence</h1>
+  <p class="tagline">Your voice. Your hardware. Your inference. No cloud required.</p>
+
+  <div class="product">
+    <h2>influx<span style="color:#666">.avi</span></h2>
+    <div class="sub">Autonomous Voice Intelligence</div>
+    <p>A pure Rust audio engine that runs speech recognition, voice detection, and local LLM summarization entirely on your Mac. Nothing leaves your machine.</p>
+    <div class="specs">
+      <div class="spec">
+        <div class="val">&lt;1 MB</div>
+        <div class="label">Binary</div>
+      </div>
+      <div class="spec">
+        <div class="val">0</div>
+        <div class="label">Cloud Calls</div>
+      </div>
+      <div class="spec">
+        <div class="val">100%</div>
+        <div class="label">Local</div>
+      </div>
+    </div>
+    <a class="cta" href="https://github.com/cyclevault-ssi/influx">View on GitHub</a>
+  </div>
+
+  <div class="footer">
+    <a href="https://github.com/cyclevault-ssi">GitHub</a> &nbsp;|&nbsp;
+    AGPL-3.0 &nbsp;|&nbsp;
+    &copy; 2026 CycleVault LLC
+  </div>
+</body>
+</html>
