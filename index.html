@@ -132,9 +132,9 @@
     h2 { margin: 0; max-width: 850px; font: 800 clamp(2.25rem, 5vw, 5rem)/1.02 system-ui, sans-serif; letter-spacing: -.05em; text-wrap: balance; }
     .intro { margin: 24px 0 0; max-width: 690px; color: var(--muted); font: 500 clamp(1rem, 1.6vw, 1.2rem)/1.7 system-ui, sans-serif; }
 
-    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 22px; margin-top: 60px; }
+    .cards { display: grid; grid-template-columns: 1fr; width: 66.667%; gap: 22px; margin-top: 60px; }
     .card {
-      min-height: 470px;
+      min-height: 0;
       padding: clamp(28px, 4vw, 48px);
       border: 1px solid var(--line);
       background: rgba(5, 28, 22, .94);
@@ -175,6 +175,7 @@
       h1 { font-size: clamp(3rem, 15.4vw, 5.2rem); }
       .tagline { max-width: 100%; font-size: .7rem; letter-spacing: .08em; }
       .cards, .builder-note { grid-template-columns: 1fr; }
+      .cards { width: 100%; }
       .card { min-height: 0; }
       .terrain { min-height: 1900px; padding-top: 82px; }
       .builder-note { margin-top: 70px; }
@@ -228,7 +229,7 @@
 
         <article class="card">
           <span class="card-index">02 / THE METHOD</span>
-          <h3>The Monument Method</h3>
+          <h3><a href="https://cyclevault-ssi.github.io/monument/">The Monument Method ↗</a></h3>
           <p>Markdown is the contract. Hashes bind it. Code serves it. Evidence proves only the named claim. Stop on drift. The human reviews, approves, and opens the next gate.</p>
           <span class="status">Read · Bind · Build · Prove · Review</span>
         </article>
