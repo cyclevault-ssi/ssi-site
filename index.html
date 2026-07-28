@@ -34,7 +34,7 @@
 
     .hero {
       position: relative;
-      min-height: 100svh;
+      min-height: 70svh;
       display: grid;
       align-items: end;
       isolation: isolate;
@@ -75,7 +75,7 @@
     .wordmark { font-size: .78rem; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; text-decoration: none; }
     .nav-note { color: var(--sun); font-size: .68rem; letter-spacing: .15em; text-transform: uppercase; }
 
-    .hero-copy { padding: 150px 0 clamp(80px, 12vh, 138px); max-width: 880px; }
+    .hero-copy { padding: 150px 0 36px; max-width: 880px; transform: translateY(-36px); }
     .eyebrow, .status {
       display: inline-flex;
       align-items: center;
@@ -93,24 +93,6 @@
     .tagline { margin: 20px 0 0; color: var(--sun); font-size: clamp(.78rem, 1.4vw, 1rem); font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
     .hero-actions { display: flex; align-items: center; gap: 20px; margin-top: 38px; flex-wrap: wrap; }
 
-    .button {
-      display: inline-flex;
-      align-items: center;
-      min-height: 50px;
-      padding: 0 21px;
-      border: 1px solid var(--paper);
-      color: var(--night);
-      background: var(--paper);
-      box-shadow: 6px 6px 0 var(--night);
-      font-size: .74rem;
-      font-weight: 900;
-      letter-spacing: .12em;
-      text-decoration: none;
-      text-transform: uppercase;
-      transition: transform .16s ease, box-shadow .16s ease;
-    }
-
-    .button:hover, .button:focus-visible { transform: translate(3px, 3px); box-shadow: 3px 3px 0 var(--night); }
     .quiet { color: var(--muted); font-size: .74rem; }
 
     .terrain {
@@ -118,7 +100,7 @@
       isolation: isolate;
       overflow: hidden;
       min-height: 1500px;
-      padding: 110px 0 72px;
+      padding: 36px 0 72px;
       background: var(--pine);
     }
 
@@ -130,9 +112,7 @@
 
     .section-kicker { margin: 0 0 18px; color: var(--sun); font-size: .7rem; font-weight: 900; letter-spacing: .16em; text-transform: uppercase; }
     h2 { margin: 0; max-width: 850px; font: 800 clamp(2.25rem, 5vw, 5rem)/1.02 system-ui, sans-serif; letter-spacing: -.05em; text-wrap: balance; }
-    .intro { margin: 24px 0 0; max-width: 690px; color: var(--muted); font: 500 clamp(1rem, 1.6vw, 1.2rem)/1.7 system-ui, sans-serif; }
-
-    .cards { display: grid; grid-template-columns: 1fr; width: 66.667%; gap: 22px; margin-top: 60px; }
+    .cards { display: grid; grid-template-columns: 1fr; width: 66.667%; gap: 44px; margin-top: 0; }
     .card {
       min-height: 0;
       padding: clamp(28px, 4vw, 48px);
@@ -168,16 +148,16 @@
     @media (max-width: 760px) {
       .shell { width: min(100% - 28px, 1180px); }
       .nav-note { display: none; }
-      .hero { min-height: 860px; }
+      .hero { min-height: 700px; }
       .hero::before { background-position: 60% center; }
       .hero::after { background: linear-gradient(0deg, var(--night) 0%, rgba(4, 19, 18, .36) 58%, rgba(4, 19, 18, .24) 100%); }
-      .hero-copy { padding-bottom: 86px; }
+      .hero-copy { padding-bottom: 36px; }
       h1 { font-size: clamp(3rem, 15.4vw, 5.2rem); }
       .tagline { max-width: 100%; font-size: .7rem; letter-spacing: .08em; }
       .cards, .builder-note { grid-template-columns: 1fr; }
       .cards { width: 100%; }
       .card { min-height: 0; }
-      .terrain { min-height: 1900px; padding-top: 82px; }
+      .terrain { min-height: 1900px; padding-top: 36px; }
       .builder-note { margin-top: 70px; }
       footer { flex-direction: column; }
     }
@@ -203,7 +183,6 @@
       <p class="subtitle">The reference standard. The Monument Method. The construction plan.</p>
       <p class="tagline">Intent preserved. Capabilities adapted. Evidence required.</p>
       <div class="hero-actions">
-        <a class="button" href="#arrivals">See the three-part release ↓</a>
         <span class="quiet">Local design preview · not a release</span>
       </div>
     </div>
@@ -215,10 +194,6 @@
     <div class="terrain-band" aria-hidden="true"></div>
 
     <div class="shell">
-      <p class="section-kicker">One release · three connected artifacts</p>
-      <h2>influx.avi, the Monument Method, and the plan launch together.</h2>
-      <p class="intro">influx.avi is the reference standard. The Monument Method grew from building it. The public construction plan will carry the product intent, capability boundaries, build order, and proof gates.</p>
-
       <section class="cards" aria-label="Coming soon">
         <article class="card">
           <span class="card-index">01 / THE REFERENCE STANDARD</span>
@@ -237,7 +212,7 @@
         <article class="card">
           <span class="card-index">03 / THE CONSTRUCTION PLAN</span>
           <h3>The influx.avi Plan</h3>
-          <p>This plan is being completed as the standalone source of product intent and construction requirements for Influx.AVI. Before release, it must let a future engineer or AI start with an empty repository, build the system in dependency order, and adapt every required capability to an unknown device or interface.</p>
+          <p>The plan is the standalone source of product intent and construction requirements for Influx.AVI. It must allow a future engineer or AI to start with an empty repository, build the system in dependency order, and adapt every required capability to an unknown device or interface.</p>
           <span class="status">Full construction contract · In review</span>
         </article>
       </section>
@@ -248,14 +223,13 @@
           <h2>The work becomes a reusable method.</h2>
         </div>
         <div>
-          <p>The Method defines how construction-grade plans are made and executed. The influx.avi plan applies it to one system. The release build will follow that plan from the first dependency to final proof. Releasing all three makes the intent, capability boundaries, build order, and proof standard inspectable on day one.</p>
+          <p>The Method defines how construction-grade plans are made and executed. The influx.avi plan applies it to one system. The release build follows that plan from the first dependency to final proof. Releasing all three makes the intent, capability boundaries, build order, and proof standard inspectable on day one.</p>
           <p class="fine-print">Independent builders can use the plan to create differently named implementations with their own agents and hardware. Those versions will not be official influx.avi releases, and design portability does not prove a working or supported port.</p>
         </div>
       </section>
 
       <footer>
         <span>CycleVault.ai · 2026</span>
-        <span>No analytics · no telemetry · no download</span>
       </footer>
     </div>
   </main>
