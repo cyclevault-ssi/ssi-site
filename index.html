@@ -1,237 +1,122 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="One coordinated release: The Monument Method, the influx.avi construction plan, and the influx.avi reference standard.">
-  <title>The Monument Method &amp; influx.avi — Coming Soon</title>
-  <style>
-    :root {
-      --night: #081b18;
-      --pine: #0c3326;
-      --moss: #5f7c2f;
-      --sun: #ffd06a;
-      --peach: #ff946e;
-      --paper: #fff4d8;
-      --muted: #c7d7bd;
-      --line: rgba(255, 244, 216, .24);
-      --shadow: rgba(3, 16, 13, .58);
-    }
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Influx — transcripts, summaries, and a local agent for your Mac</title>
+<meta name="description" content="Influx turns recordings and documents into transcripts and summaries, then lets a local agent discuss them with you. Source available and free for noncommercial use, for Apple Silicon macOS. In development.">
+<style>
+  :root {
+    --night:#081b18; --pine:#0c3326; --moss:#5f7c2f; --sun:#ffd06a; --peach:#ff946e;
+    --paper:#fff4d8; --muted:#c7d7bd; --line:rgba(255,244,216,.24); --shadow:rgba(3,16,13,.58);
+    --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  }
+  * { box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { margin:0; background:var(--night); color:var(--paper); font:17px/1.65 var(--mono); }
+  a { color:var(--sun); }
+  .wrap { max-width:860px; margin:0 auto; padding:0 22px; position:relative; z-index:2; }
 
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      overflow-x: hidden;
-      color: var(--paper);
-      background: var(--night);
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
-      line-height: 1.6;
-    }
+  /* header */
+  header { position:absolute; inset:0 0 auto 0; z-index:3; }
+  header .wrap { display:flex; justify-content:space-between; align-items:center; padding-top:20px; }
+  .brand { color:var(--paper); text-decoration:none; font-weight:700; letter-spacing:.04em; text-shadow:2px 2px 0 var(--shadow); }
+  nav a { color:var(--paper); text-decoration:none; margin-left:20px; font-size:14px; text-shadow:2px 2px 0 var(--shadow); }
+  nav a:hover { color:var(--sun); }
 
-    a { color: inherit; }
-    .shell { width: min(1180px, calc(100% - 40px)); margin: 0 auto; }
+  /* hero: your image, darkened for legibility */
+  .hero { position:relative; min-height:88vh; display:flex; align-items:flex-end; overflow:hidden; }
+  .hero::before { content:""; position:absolute; inset:0; background:url("assets/monument-hero.jpg") center / cover no-repeat; image-rendering:pixelated; }
+  .hero::after { content:""; position:absolute; inset:0;
+    background:
+      linear-gradient(90deg, rgba(8,27,24,.78) 0%, rgba(8,27,24,.38) 55%, rgba(8,27,24,.08) 100%),
+      linear-gradient(0deg, var(--night) 0%, rgba(8,27,24,0) 38%); }
+  .hero .wrap { padding-top:120px; padding-bottom:64px; }
+  .status { display:inline-block; font-size:12px; letter-spacing:.08em; text-transform:uppercase; border:1px solid var(--line); background:rgba(8,27,24,.55); padding:4px 12px; margin-bottom:18px; color:var(--sun); }
+  h1 { font:700 clamp(2.2rem,6vw,3.6rem)/1.08 system-ui,sans-serif; margin:0 0 18px; text-shadow:4px 4px 0 var(--shadow); }
+  .lede { font-size:1.05rem; color:var(--paper); max-width:34em; text-shadow:2px 2px 0 var(--shadow); margin:0 0 26px; }
+  .cta { display:inline-block; background:var(--sun); color:var(--night); font-weight:700; text-decoration:none; padding:13px 22px; box-shadow:6px 6px 0 var(--shadow); }
+  .cta:hover { background:var(--peach); }
 
-    .hero {
-      position: relative;
-      min-height: 70svh;
-      display: grid;
-      align-items: end;
-      isolation: isolate;
-      overflow: hidden;
-      background: #173f31;
-    }
+  /* content */
+  section { padding:52px 0 8px; }
+  h2 { font:700 1.5rem/1.2 system-ui,sans-serif; margin:0 0 14px; color:var(--sun); }
+  p { margin:0 0 14px; color:var(--muted); }
+  p strong { color:var(--paper); }
+  .grid { display:grid; gap:20px; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); margin-top:22px; }
+  .card { background:var(--pine); border:1px solid var(--line); padding:20px; box-shadow:12px 12px 0 rgba(4,19,18,.52); }
+  .card h3 { margin:0 0 6px; font:700 1.05rem system-ui,sans-serif; color:var(--paper); }
+  .card p { margin:0; font-size:15px; }
+  form { display:flex; gap:10px; flex-wrap:wrap; margin:18px 0 8px; }
+  input[type=email] { flex:1 1 240px; padding:13px 14px; border:1px solid var(--line); background:var(--pine); color:var(--paper); font:inherit; }
+  input[type=email]::placeholder { color:var(--muted); opacity:.7; }
+  button { padding:13px 22px; border:0; background:var(--sun); color:var(--night); font:inherit; font-weight:700; cursor:pointer; box-shadow:6px 6px 0 var(--shadow); }
+  button:hover { background:var(--peach); }
+  .fine { font-size:13px; }
 
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      z-index: -3;
-      background: url("assets/monument-hero.jpg") center / cover no-repeat;
-      image-rendering: pixelated;
-      transform: scale(1.012);
-    }
+  /* grass band (your asset) */
+  .terrain-band { height:72px; margin-top:64px; background:url("assets/monument-grass-continuation.png") center / 100% 100% no-repeat; image-rendering:pixelated; }
+  footer { background:var(--pine); padding:26px 0 44px; font-size:13px; color:var(--muted); }
 
-    .hero::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      z-index: -2;
-      background:
-        linear-gradient(90deg, rgba(4, 19, 18, .84) 0%, rgba(4, 19, 18, .48) 49%, rgba(4, 19, 18, .08) 76%),
-        linear-gradient(0deg, var(--night) 0%, transparent 38%, rgba(4, 19, 18, .10) 100%);
-    }
-
-    .nav {
-      position: absolute;
-      inset: 0 0 auto;
-      z-index: 2;
-      padding: 22px 0;
-      border-bottom: 1px solid rgba(255, 244, 216, .12);
-      background: linear-gradient(rgba(4, 19, 18, .45), transparent);
-    }
-
-    .nav-row { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
-    .wordmark { font-size: .78rem; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; text-decoration: none; }
-    .nav-note { color: var(--sun); font-size: .68rem; letter-spacing: .15em; text-transform: uppercase; }
-
-    .hero-copy { padding: 150px 0 36px; max-width: 880px; transform: translateY(-36px); }
-    .eyebrow, .status {
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      margin: 0 0 22px;
-      font-size: .72rem;
-      font-weight: 800;
-      letter-spacing: .16em;
-      text-transform: uppercase;
-    }
-
-    .eyebrow::before, .status::before { content: ""; width: 28px; height: 2px; background: var(--sun); }
-    h1 { margin: 0; max-width: 980px; font-size: clamp(3.1rem, 9vw, 8.2rem); line-height: .88; letter-spacing: -.075em; text-wrap: balance; }
-    .subtitle { margin: 30px 0 0; max-width: 760px; color: #fff0c9; font: 700 clamp(1.18rem, 2.4vw, 1.7rem)/1.35 system-ui, sans-serif; text-wrap: balance; }
-    .tagline { margin: 20px 0 0; color: var(--sun); font-size: clamp(.78rem, 1.4vw, 1rem); font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
-    .hero-actions { display: flex; align-items: center; gap: 20px; margin-top: 38px; flex-wrap: wrap; }
-
-    .quiet { color: var(--muted); font-size: .74rem; }
-
-    .terrain {
-      position: relative;
-      isolation: isolate;
-      overflow: hidden;
-      min-height: 1500px;
-      padding: 36px 0 72px;
-      background: var(--pine);
-    }
-
-    .terrain-band { position: absolute; z-index: -3; left: 0; width: 100%; height: 33.334%; background: url("assets/monument-grass-continuation.png") center / 100% 100% no-repeat; image-rendering: pixelated; }
-    .terrain-band:nth-child(1) { top: 0; }
-    .terrain-band:nth-child(2) { top: 33.333%; transform: scaleY(-1); }
-    .terrain-band:nth-child(3) { top: 66.666%; }
-    .terrain::after { content: ""; position: absolute; z-index: -2; inset: 0; background: rgba(3, 26, 20, .64); }
-
-    .section-kicker { margin: 0 0 18px; color: var(--sun); font-size: .7rem; font-weight: 900; letter-spacing: .16em; text-transform: uppercase; }
-    h2 { margin: 0; max-width: 850px; font: 800 clamp(2.25rem, 5vw, 5rem)/1.02 system-ui, sans-serif; letter-spacing: -.05em; text-wrap: balance; }
-    .cards { display: grid; grid-template-columns: 1fr; width: 66.667%; gap: 44px; margin-top: 0; }
-    .card {
-      min-height: 0;
-      padding: clamp(28px, 4vw, 48px);
-      border: 1px solid var(--line);
-      background: rgba(5, 28, 22, .94);
-      box-shadow: 12px 12px 0 rgba(4, 19, 18, .52);
-    }
-
-    .card-index { color: var(--peach); font-size: .7rem; font-weight: 900; letter-spacing: .18em; }
-    .card h3 { margin: 28px 0 0; font: 850 clamp(2rem, 3.7vw, 3.7rem)/1.03 system-ui, sans-serif; letter-spacing: -.045em; }
-    .card p { margin: 24px 0 0; color: var(--muted); font: 500 1rem/1.75 system-ui, sans-serif; }
-    .status { margin-top: 42px; color: var(--sun); }
-
-    .builder-note {
-      display: grid;
-      grid-template-columns: .7fr 1.3fr;
-      gap: 36px;
-      margin-top: 120px;
-      padding: clamp(30px, 5vw, 58px);
-      border: 1px solid var(--line);
-      background: rgba(255, 244, 216, .94);
-      color: var(--night);
-      box-shadow: 14px 14px 0 rgba(4, 19, 18, .55);
-    }
-
-    .builder-note .section-kicker { color: #b84432; }
-    .builder-note h2 { font-size: clamp(2rem, 4vw, 4rem); }
-    .builder-note p { margin: 0; font: 600 clamp(1rem, 1.8vw, 1.22rem)/1.7 system-ui, sans-serif; }
-    .fine-print { margin-top: 30px !important; padding-top: 24px; border-top: 1px solid rgba(8, 27, 24, .18); font-size: .78rem !important; font-weight: 750 !important; }
-
-    footer { display: flex; justify-content: space-between; gap: 24px; padding: 32px 0 0; margin-top: 86px; border-top: 1px solid var(--line); color: #b6c8ad; font-size: .7rem; letter-spacing: .08em; text-transform: uppercase; }
-
-    @media (max-width: 760px) {
-      .shell { width: min(100% - 28px, 1180px); }
-      .nav-note { display: none; }
-      .hero { min-height: 700px; }
-      .hero::before { background-position: 60% center; }
-      .hero::after { background: linear-gradient(0deg, var(--night) 0%, rgba(4, 19, 18, .36) 58%, rgba(4, 19, 18, .24) 100%); }
-      .hero-copy { padding-bottom: 36px; }
-      h1 { font-size: clamp(3rem, 15.4vw, 5.2rem); }
-      .tagline { max-width: 100%; font-size: .7rem; letter-spacing: .08em; }
-      .cards, .builder-note { grid-template-columns: 1fr; }
-      .cards { width: 100%; }
-      .card { min-height: 0; }
-      .terrain { min-height: 1900px; padding-top: 36px; }
-      .builder-note { margin-top: 70px; }
-      footer { flex-direction: column; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      *, *::before, *::after { transition: none !important; }
-    }
-  </style>
+  @media (max-width:760px) { nav a { margin-left:12px; } .hero { min-height:80vh; } }
+  @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } }
+</style>
 </head>
 <body>
-  <header class="hero">
-    <nav class="nav" aria-label="Primary">
-      <div class="shell nav-row">
-        <a class="wordmark" href="#top">CycleVault.ai</a>
-        <span class="nav-note">One release · no download yet</span>
-      </div>
-    </nav>
+<header>
+  <div class="wrap">
+    <a class="brand" href="#top">SOLID STATE INTELLIGENCE</a>
+    <nav><a href="#influx">Influx</a><a href="#download">Download</a><a href="#about">About</a></nav>
+  </div>
+</header>
 
-    <div class="shell hero-copy" id="top">
-      <p class="eyebrow">The reference standard, method, and plan release together</p>
-      <h1>influx.avi</h1>
-      <p class="subtitle">The reference standard. The Monument Method. The construction plan.</p>
-      <p class="tagline">Intent preserved. Capabilities adapted. Evidence required.</p>
-      <div class="hero-actions">
-        <span class="quiet">Local design preview · not a release</span>
-      </div>
+<div class="hero" id="top">
+  <div class="wrap">
+    <span class="status">In development · no download yet</span>
+    <h1>Talk to your recordings.</h1>
+    <p class="lede">Influx turns audio recordings and documents into transcripts and summaries, then lets a local agent discuss them with you. Free for personal use, with the source open to read. Built for Apple Silicon Macs.</p>
+    <a class="cta" href="#download">Get notified at launch</a>
+  </div>
+</div>
+
+<main class="wrap">
+  <section id="influx">
+    <h2>What Influx does</h2>
+    <div class="grid">
+      <div class="card"><h3>Transcription</h3><p>Convert recordings into searchable text.</p></div>
+      <div class="card"><h3>Summaries</h3><p>Get the short version of a long recording or document.</p></div>
+      <div class="card"><h3>Document import</h3><p>Bring in text documents alongside your recordings.</p></div>
+      <div class="card"><h3>Local agent</h3><p>Discuss your recordings and transcripts with an agent that runs on your Mac, powered by Granite.</p></div>
     </div>
-  </header>
+  </section>
 
-  <main class="terrain" id="arrivals">
-    <div class="terrain-band" aria-hidden="true"></div>
-    <div class="terrain-band" aria-hidden="true"></div>
-    <div class="terrain-band" aria-hidden="true"></div>
+  <section id="download">
+    <h2>Get Influx</h2>
+    <p>Influx is still being built. When it's ready you'll be able to download a <strong>.dmg</strong> for macOS, or get the <strong>full source code</strong> and build it yourself.</p>
+    <p>Want a note when it ships? Leave your email. I'll use it for release announcements only.</p>
+    <form action="https://formspree.io/f/xbdwaevz" method="post">
+      <input type="email" name="email" placeholder="you@example.com" required aria-label="Email address">
+      <button type="submit">Notify me</button>
+    </form>
+    <p class="fine">No spam, and I don't share your address. Unsubscribe any time.</p>
+  </section>
 
-    <div class="shell">
-      <section class="cards" aria-label="Coming soon">
-        <article class="card">
-          <span class="card-index">01 / THE REFERENCE STANDARD</span>
-          <h3>influx.avi</h3>
-          <p>influx.avi is the reference standard. The release build follows that plan from the first dependency to final proof and is evaluated against published acceptance gates. Builders will be invited to meet it, exceed it, or prove a different capability on hardware of their choosing. Its first planned package target is Apple Silicon macOS.</p>
-          <span class="status">Reference standard · Challenge planned</span>
-        </article>
+  <section>
+    <h2>License</h2>
+    <p>Influx is source available under the <a href="https://polyformproject.org/licenses/noncommercial/1.0.0/">PolyForm Noncommercial License 1.0.0</a>. You can read the source, run it, modify it, and share it for any noncommercial purpose, including personal use, research, and education.</p>
+    <p>Commercial use needs a separate license. To ask about one, email <a href="mailto:jsfullner@cyclevault.ai">jsfullner@cyclevault.ai</a>.</p>
+    <p>Influx is developed by one person and is <strong>not accepting code contributions</strong>. Bug reports are welcome once there's a release.</p>
+  </section>
 
-        <article class="card">
-          <span class="card-index">02 / THE METHOD</span>
-          <h3><a href="https://cyclevault-ssi.github.io/monument/">The Monument Method ↗</a></h3>
-          <p>Markdown is the contract. Hashes bind it. Code serves it. Evidence proves only the named claim. Stop on drift. The human reviews, approves, and opens the next gate.</p>
-          <span class="status">Read · Bind · Build · Prove · Review</span>
-        </article>
+  <section id="about">
+    <h2>About</h2>
+    <p>Contact: <a href="mailto:jsfullner@cyclevault.ai">jsfullner@cyclevault.ai</a> · Code: <a href="https://github.com/cyclevault-ssi">github.com/cyclevault-ssi</a></p>
+  </section>
+</main>
 
-        <article class="card">
-          <span class="card-index">03 / THE CONSTRUCTION PLAN</span>
-          <h3>The influx.avi Plan</h3>
-          <p>The plan is the standalone source of product intent and construction requirements for Influx.AVI. It must allow a future engineer or AI to start with an empty repository, build the system in dependency order, and adapt every required capability to an unknown device or interface.</p>
-          <span class="status">Full construction contract · In review</span>
-        </article>
-      </section>
-
-      <section class="builder-note">
-        <div>
-          <p class="section-kicker">Why launch all three</p>
-          <h2>The work becomes a reusable method.</h2>
-        </div>
-        <div>
-          <p>The Method defines how construction-grade plans are made and executed. The influx.avi plan applies it to one system. The release build follows that plan from the first dependency to final proof. Releasing all three makes the intent, capability boundaries, build order, and proof standard inspectable on day one.</p>
-          <p class="fine-print">Independent builders can use the plan to create differently named implementations with their own agents and hardware. Those versions will not be official influx.avi releases, and design portability does not prove a working or supported port.</p>
-        </div>
-      </section>
-
-      <footer>
-        <span>CycleVault.ai · 2026</span>
-      </footer>
-    </div>
-  </main>
+<div class="terrain-band" role="presentation"></div>
+<footer>
+  <div class="wrap">© 2026 CycleVault LLC</div>
+</footer>
 </body>
 </html>
